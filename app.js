@@ -6,9 +6,19 @@ const axios = require("axios");
 const fs = require("fs");
 const Path = require("path");
 
-const Token = process.env.BOT_TOKEN;
+var Token = process.env.BOT_TOKEN;
 
 const bot = new Telegraf(Token);
+
+const readline = require('readline').createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+readline.question('Bot token:', token => {
+  Token = token;
+  readline.close();
+});
 
 const send_image = (id, img_path) => {
   console.log(id);
